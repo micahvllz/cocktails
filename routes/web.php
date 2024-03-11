@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\CocktailController;
 
 /*
 |--------------------------------------------------------------------------
@@ -13,6 +14,8 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+// Route to display the list of cocktails
+Route::get('/', [CocktailController::class, 'index'])->name('cocktails.index');
+
+// Route to display the details of a specific cocktail
+Route::get('/{id}', [CocktailController::class, 'show'])->name('cocktails.show');
